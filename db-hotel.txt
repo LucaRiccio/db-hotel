@@ -48,9 +48,9 @@ FROM `pagamenti`;
 
 7. Seleziona gli ospiti riconosciuti con patente e nati nel 1975.
 
-SELECT *
-FROM `ospiti`
-WHERE `document_type`= 'Driver License' AND `date_of_birth` > '1974-12-31';  **DA RIVEDERE, NON FUNZIONA**
+SELECT * 
+FROM `ospiti` 
+WHERE `document_type`= 'Driver License' AND `date_of_birth`<= '1975/12/31' AND `date_of_birth`>= '1975/01/01'
 
 ------------------------------------------------------------------------------------------
 
