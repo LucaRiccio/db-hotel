@@ -14,51 +14,27 @@ GROUP BY `status`
 
 ------------------------------------------------------------------------------------------
 
-3.  Seleziona tutti gli ospiti che hanno più di 20 anni
-    (al momento dell’esecuzione della query).
+3) Conta quante volte è stata prenotata ogni stanza
 
-SELECT * 
-FROM `ospiti` 
-WHERE `date_of_birth` < '2000-09-24';
-
-SELECT *
-FROM `ospiti`
-WHERE `date_of_birth` <= DATE_SUB(CURDATE(),INTERVAL 21 YEAR)
-
+SELECT COUNT(`stanza_id`),`stanza_id`
+FROM `prenotazioni`
+GROUP BY `stanza_id`
 
 ------------------------------------------------------------------------------------------
 
-4.  Seleziona tutti gli ospiti il cui nome inizia con la D.
+4) Stampare tutti gli ospiti per ogni prenotazione
 
-SELECT * 
-FROM `ospiti` 
-WHERE `name` LIKE 'D%';
-
-------------------------------------------------------------------------------------------
-
-5. Calcolare il totale degli ospiti paganti
-
-SELECT COUNT(*) 
-FROM `paganti`;
+SELECT prenotazione_id, ospiti.name, ospiti.lastname
+FROM `prenotazioni_has_ospiti`
+INNER JOIN `ospiti`
+ON prenotazioni_has_ospiti.ospite_id = ospiti.id;
 
 ------------------------------------------------------------------------------------------
 
-6.  Qual è il prezzo massimo pagato?
 
-SELECT MAX(`price`)
-FROM `pagamenti`;
 
-------------------------------------------------------------------------------------------
 
-7. Seleziona gli ospiti riconosciuti con patente e nati nel 1975.
 
-SELECT * 
-FROM `ospiti` 
-WHERE `document_type`= 'Driver License' AND `date_of_birth`<= '1975/12/31' AND `date_of_birth`>= '1975/01/01'
-
-------------------------------------------------------------------------------------------
-
-8. Quanti posti letto ha l’hotel in totale?
-
-SELECT SUM(`beds`) 
-FROM `stanze`;
+5) Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018
+6) Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
+7) Prendi i dati di fatturazione per la prenotazione con id=7
