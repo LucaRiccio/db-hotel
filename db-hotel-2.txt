@@ -1,17 +1,16 @@
-1.  Seleziona tutti gli ospiti che sono stati identificati con
-    la carta di identità.
+1) Conta gli ospiti raggruppandoli per anno di nascita
 
-SELECT `document_type`
-FROM `ospiti`
-WHERE `document_type` = 'CI';
+SELECT COUNT(`id`), YEAR(date_of_birth)
+FROM `ospiti` 
+GROUP BY YEAR(date_of_birth);
 
 ------------------------------------------------------------------------------------------
 
-2. Seleziona tutti gli ospiti che sono nati dopo il 1988.
+2) Somma i prezzi dei pagamenti raggruppandoli per status
 
-SELECT `name`,`lastname`,`date_of_birth`
-FROM `ospiti`
-WHERE `date_of_birth` >= '1988-12-31';
+SELECT SUM(`price`),`status`
+FROM `pagamenti`
+GROUP BY `status`
 
 ------------------------------------------------------------------------------------------
 
