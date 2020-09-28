@@ -48,3 +48,11 @@ WHERE stanze.floor = 1
 ------------------------------------------------------------------------------------------
 
 7) Prendi i dati di fatturazione per la prenotazione con id=7
+
+SELECT paganti.name, paganti.lastname, paganti.address
+FROM `paganti`
+INNER JOIN `pagamenti`
+ON pagamenti.pagante_id = paganti.id
+INNER JOIN `prenotazioni`
+ON prenotazioni.id = pagamenti.prenotazione_id
+WHERE prenotazioni.id = 7;
