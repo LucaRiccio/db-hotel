@@ -1,0 +1,21 @@
+1) Fai un'analisi per vedere se ci sono ore in cui le prenotazioni sono più frequenti.
+
+SELECT HOUR(`created_at`), COUNT(id)
+FROM `prenotazioni` 
+GROUP BY HOUR(`created_at`)
+ORDER BY COUNT(id) DESC;
+
+------------------------------------------------------------------------------------------
+
+2) Le stanze sono state tutte prenotate almeno una volta? (Visualizzare le stanze non ancora prenotate)
+
+
+
+------------------------------------------------------------------------------------------
+
+3) Come si chiamano gli ospiti che hanno fatto più di due prenotazioni?
+
+
+------------------------------------------------------------------------------------------
+
+   
