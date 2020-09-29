@@ -9,12 +9,23 @@ ORDER BY COUNT(id) DESC;
 
 2) Le stanze sono state tutte prenotate almeno una volta? (Visualizzare le stanze non ancora prenotate)
 
-
+SELECT stanze.id, stanze.room_number
+FROM `stanze`
+LEFT JOIN `prenotazioni`
+ON stanze.id = prenotazioni.stanza_id
+WHERE prenotazioni.id IS NULL;
 
 ------------------------------------------------------------------------------------------
 
 3) Come si chiamano gli ospiti che hanno fatto più di due prenotazioni?
 
+SELECT ospiti.name, ospiti.lastname, COUNT(prenotazioni_has_ospiti.ospite_id) AS `numero_pr`
+
+FROM `ospiti`
+INNER JOIN `prenotazioni_has_ospiti`
+ON ospiti.id = prenotazioni_has_ospiti.ospite_id
+GROUP BY prenotazioni_has_ospiti.ospite_id
+HAVING `numero_pr`> 2
 
 ------------------------------------------------------------------------------------------
 
